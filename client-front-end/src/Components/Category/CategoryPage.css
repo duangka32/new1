@@ -1,0 +1,48 @@
+.category-page {
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.category-box {
+  margin: 40px auto; /* เปลี่ยนจาก 20px เป็น 40px เพื่อห่างเท่ากับของ Home */
+  background-color: rgba(255, 255, 255, 0.397);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  width: 95%;
+  max-width: 1140px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column; /* เพื่อให้ข้อความเรียงลงล่างแทนข้างๆ */
+  gap: 30px;
+}
+
+
+
+.category-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed #ccc;
+}
+
+.category-header h2 {
+  font-size: 28px;
+  color: #1e3a8a; /* น้ำเงินเข้มแบบกลมกลืนกับ TopBar */
+  margin-bottom: 8px;
+}
+
+.category-header p {
+  font-size: 16px;
+  color: #444;
+}
+
+.category-content {
+  text-align: center;
+  padding: 20px;
+}

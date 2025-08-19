@@ -1,0 +1,131 @@
+/* 1. ป้องกัน padding ล้นขอบ + font */
+* {
+  box-sizing: border-box;
+  font-family: 'Prompt', sans-serif;
+}
+
+/* ครอบทั้งหน้าคลังสินค้า */
+.page-wrapper {
+
+  min-height: 100vh;
+  padding: 120px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* ไม่ต้องอยู่กลางจอแนวดิ่ง */
+}
+
+/* ปรับตรงนี้เป็นหลัก */
+.page-content-box {
+  width: 100%;
+  max-width: 1140px;
+  min-width: 320px; /* ป้องกันถูกบีบเกินไป */
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Top Bar */
+.product-stock-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  background-color: #2196f3;
+  padding: 15px 20px;
+  border-radius: 12px;
+}
+
+/* กล่องค้นหา */
+.product-stock-top-bar input[type="text"] {
+  flex: 1;
+  min-width: 240px;
+  max-width: 400px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+/* ปุ่มเพิ่มสินค้า */
+.add-button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #0d47a1;
+}
+
+/* ตารางสินค้า */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* หัวตาราง */
+.product-table th {
+  background-color: #f1f1f1;
+  padding: 14px 12px;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
+
+/* แถวข้อมูล */
+.product-table td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+/* ไอคอนในแถว */
+.product-table td svg {
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 6px;
+  transition: color 0.2s ease;
+}
+
+.product-table td svg:hover {
+  color: #1976d2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-stock-top-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-stock-top-bar input[type="text"],
+  .add-button {
+    width: 100%;
+  }
+
+  .product-table th,
+  .product-table td {
+    padding: 10px 6px;
+    font-size: 13px;
+  }
+}

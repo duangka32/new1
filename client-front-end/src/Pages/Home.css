@@ -1,0 +1,155 @@
+.home-wrapper {
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  display: flex;
+  width: 100%;
+  height: 120px;
+  background-color: #1976d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* ครอบรวมโปรไฟล์ ค้นหา รถเข็น */
+.left-bar,
+.right-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ขวาและซ้ายอยู่ใกล้ search มากขึ้น */
+.left-bar {
+  margin-right: 16px;
+}
+
+.right-bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+
+.search-container {
+  flex: 1; 
+  max-width: 600px; 
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 6px 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+.search-container input {
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  flex: 1;
+  font-size: 14px;
+}
+
+.search-btn,
+.clear-btn {
+  font-size: 20px;  /* หรือมากสุด 24px */
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-icon,
+.notification-icon {
+  font-size: 36px; /* สำหรับ emoji หรือใช้ไอคอนจาก react-icons จะชัดกว่า */
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+
+
+.home-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+.main-content-box {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.397);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  width: 95%;
+  max-width: 1140px;
+  min-height: 500px;
+
+  display: flex;
+  gap: 30px;
+}
+
+
+
+/* ส่วนรูปภาพด้านซ้าย */
+.ad-image {
+  flex: 2;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ad-image img {
+  width: 90%;         /* ✅ กว้างขึ้นจากเดิม */
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* ส่วนหมวดหมู่ด้านขวา */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
+  gap: 20px;
+  justify-items: center; /* จัดให้อยู่กลางแต่ละคอลัมน์ */
+  align-items: center;
+}
+
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.category-icon {
+  width: 110px;         /* จากเดิม 60px */
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.category-item span {
+  font-size: 1.1rem;     /* เพิ่มขนาดข้อความ */
+  font-weight: 600;
+}
+
