@@ -74,3 +74,56 @@
   justify-content: center;
   gap: 8px;                  /* ระยะห่างระหว่าง icon กับข้อความ */
 }
+
+/* กล่องมาตรฐานใช้ซ้ำได้ */
+.section-box {
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.section-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+/* ให้ปุ่มในกล่องกว้างเต็ม */
+.section-box .btn {
+  width: 100%;
+}
+/* Badge แสดงคงเหลือ */
+.stock-chip {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  border: 1px solid transparent;
+}
+
+/* ปกติ */
+.stock-chip.ok {
+  background: #e6fffb;
+  color: #006d75;
+  border-color: #b5f5ec;
+}
+
+/* ใกล้หมด (<=5) */
+.stock-chip.low {
+  background: #fff7e6;
+  color: #ad6800;
+  border-color: #ffe7ba;
+}
+
+/* หมดสต็อก */
+.stock-chip.oos {
+  background: #fff1f0;
+  color: #a8071a;
+  border-color: #ffa39e;
+}

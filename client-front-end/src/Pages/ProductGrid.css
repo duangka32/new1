@@ -1,0 +1,172 @@
+/* กริดสินค้า: การ์ดขนาดย่อ */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* การ์ดยืด/หดอัตโนมัติ */
+  gap: 16px;
+  width: 100%;
+}
+
+/* คอนเทนเนอร์การ์ด */
+.product-card {
+  min-width: 0;               /* กันล้นใน grid/flex */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  background: #fff;
+  overflow: hidden;            /* กัน child ล้น */
+}
+
+/* โซนรูป */
+.product-card .image {
+  background: #f3f4f6;
+  position: relative;          /* ให้ป้ายวางทับได้ */
+}
+.product-card .image img {
+  display: block;
+  width: 100%;
+  /* เลือกอย่างใดอย่างหนึ่ง:
+     1) fixed height:
+        height: 160px; object-fit: cover;
+     2) aspect-ratio ยืดหยุ่น: */
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* ถ้าใช้ .thumb ครอบรูป */
+.product-card .thumb img {
+  width: 100%;
+  aspect-ratio: 1 / 1;       /* ถ้าต้องการสี่เหลี่ยมจัตุรัส */
+  object-fit: cover;
+  display: block;
+}
+
+/* ป้าย "หมดสต็อก" บนรูป */
+.stock-badge.oos {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ef4444;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+/* ข้อความและราคา */
+.product-card .info {
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+}
+.product-card .name {
+  font-weight: 700;
+  font-size: 13px;
+  color: #111827;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+.product-card .name:hover {
+  text-decoration: underline;
+}
+.product-card .price {
+  font-weight: 700;
+  font-size: 13px;
+  color: #2563eb;
+}
+
+/* ปุ่มเพิ่มลงตะกร้า (ขนาดเล็ก) */
+.add-btn {
+  margin: 8px 10px 10px;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  background: #1976d2;
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+}
+.add-btn:hover { background: #1457a8; }
+.add-btn:disabled { opacity: .6; cursor: not-allowed; }  /* ← แก้ selector ให้ถูก */
+
+/* แถบควบคุมจำนวน */
+.qty-control {
+  margin: 8px 10px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background: #f9fafb;
+}
+.qty-control .dec,
+.qty-control .inc {
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 6px;
+  background: #1976d2;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.qty-control .dec:hover,
+.qty-control .inc:hover { background: #1457a8; }
+.qty-control .inc[disabled],
+.qty-control .inc:disabled { opacity: .5; cursor: not-allowed; } /* ปิดปุ่ม + เมื่อเกินสต็อก */
+.qty-control .qty {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* วิดเจ็ตข้อความ/ราคาในกริดไม่ดันล้น */
+.product-card .title,
+.product-card .price,
+.product-card button {
+  min-width: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* ป้าย/แบดจ์ทั่วไป (เผื่อใช้) */
+.stock-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f5132;
+  background: #d1e7dd;
+  border: 1px solid #badbcc;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+/* แสดงคงเหลือใต้การ์ด */
+.stock-left {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #374151;
+  text-align: center;
+  opacity: .9;
+}
+
+/* จอเล็ก */
+@media (max-width: 480px) {
+  .products-grid {
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .product-card .info { padding: 6px 8px; }
+  .add-btn { padding: 7px 9px; font-size: 12px; }
+}

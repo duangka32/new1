@@ -1,3 +1,4 @@
+/*AddProduct.css*/
 .add-product-container {
   background-color: white;
   padding: 30px;
@@ -75,22 +76,59 @@ textarea {
 
 .preview-image {
   width: 120px;
-  height: auto;
-  border-radius: 8px;
+  height: 120px;
   object-fit: cover;
+  border-radius: 8px;
+  display: block;
 }
 
 .remove-image-button {
   position: absolute;
-  top: 0;
-  right: 0;
-  background: #ff4d4d;
+  top: -8px;               /* ดันออกนอกมุมเล็กน้อย (ปรับได้) */
+  right: -8px;
+  width: 32px;
+  height: 32px;
+  padding: 0;              /* สำคัญ: ไม่ให้กลายเป็นวงรี */
+  line-height: 0;          /* กัน line-height ดัน */
   border: none;
-  color: white;
   border-radius: 50%;
+  background: #ff4d4d;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  padding: 4px 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.18);
+  transition: transform .12s ease, filter .12s ease;
 }
+
+
+.remove-image-button:hover {
+  transform: scale(1.06);
+  filter: brightness(0.95);
+}
+
+.remove-image-button:active {
+  transform: scale(0.96);
+}
+
+/* ให้ไอคอนในปุ่มมีขนาดพอดี */
+.remove-image-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* (เสริม) ปรับขนาดปุ่มบนจอเล็ก */
+@media (max-width: 480px) {
+  .remove-image-button {
+    width: 28px;
+    height: 28px;
+    top: -6px;
+    right: -6px;
+  }
+  .remove-image-button svg { width: 14px; height: 14px; }
+}
+
 .header-bar {
   display: flex;
   justify-content: space-between;

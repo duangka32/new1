@@ -1,0 +1,166 @@
+/* ความสูงมาตรฐานของ TopBar (ค่าเริ่มต้น) */
+:root { --topbar-h: 120px; }
+
+/* --- TopBar --- */
+.top-bar{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  height: var(--topbar-h);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  height: var(--topbar-h);
+  padding: 0 20px;
+  background-color: #1976d2;
+  box-sizing: border-box;  /* กัน padding ทำให้สูงเกิน */
+}
+
+.left-bar,
+.right-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.left-bar { margin-right: 16px; }
+.right-bar { gap: 24px; }
+
+.search-container {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 6px 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+}
+.search-container input {
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  flex: 1;
+  font-size: 14px;
+}
+.search-btn,
+.clear-btn {
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.cart-icon,
+.notification-icon {
+  font-size: 36px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+/* ปุ่มตัวกรอง */
+.filter-btn {
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 18px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.filter-btn:hover { background: rgba(255,255,255,0.22); }
+.filter-text { font-weight: 600; font-size: 14px; }
+
+/* ปุ่ม Home เป็นไอคอนล้วน */
+.home-btn {
+  margin-left: 10px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #fff;
+  padding: 0 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.home-btn:hover { opacity: .9; }
+.home-btn:focus-visible {
+  outline: 2px solid rgba(255,255,255,.6);
+  outline-offset: 2px;
+}
+
+/* แผงตัวกรอง */
+.filter-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(360px, 60vw, 720px);
+  background: #fff;
+  color: #111;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+  padding: 10px 12px;
+  z-index: 20;
+}
+
+/* แถวในแผง */
+.filter-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.filter-row.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.filter-row label { font-weight: 700; font-size: 13px; }
+.filter-row input,
+.filter-row select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f7f7f8;
+  outline: none;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+.filter-actions .btn {
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.filter-actions .btn.clear { background: #f3f4f6; color: #374151; }
+.filter-actions .btn.apply { background: #1976d2; color: #fff; }
+
+/* มือถือ: ความกว้างแผงกรองใช้ 100% ของ TopBar ไม่ใช่ 100vw */
+@media (max-width: 640px) {
+  .filter-panel {
+    width: min(560px, calc(100% - 32px));
+  }
+  .filter-row.two { grid-template-columns: 1fr; }
+}
+
+/* ❌ ตัดการดันทั้งหน้าออกจากไฟล์นี้ (ไปทำใน AppShell.css แทน) */
+/* body, .app, .main-content-root { padding-top: var(--topbar-h); } */
+
+/* (ถ้าคุณใช้ AppShell ตั้ง --topbar-h อัตโนมัติอยู่แล้ว
+   จะไม่ต้องมี media query เปลี่ยนค่าในไฟล์นี้) */

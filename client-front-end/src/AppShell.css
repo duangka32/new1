@@ -1,0 +1,41 @@
+/* src/AppShell.css */
+
+/* ===== ตัวครอบทุกหน้า ===== */
+.app-shell{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== คอนเทนต์หลัก (ดันพ้น TopBar ที่ fixed) ===== */
+.app-main{
+  flex: 1 1 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: calc(var(--topbar-h) + 12px); /* ดันพ้น TopBar */
+}
+
+/* ===== scrollIntoView anchor ===== */
+.sticky-anchor,
+.products-section,
+.main-content-box{
+  scroll-margin-top: calc(var(--topbar-h) + 12px);
+}
+
+/* ===== เคลียร์ spacer เก่าออก ===== */
+.topbar-spacer{
+  display: none !important;
+  height: 0 !important;
+}
+
+/* ===== Reset / Global ===== */
+html, body, #root{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+*, *::before, *::after{
+  box-sizing: inherit;
+}

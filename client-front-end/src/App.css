@@ -36,3 +36,6 @@
     transform: rotate(360deg);
   }
 }
+html, body, #root { overflow-x: clip; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+img, video { max-width: 100%; height: auto; display: block; }

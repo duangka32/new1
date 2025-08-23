@@ -1,0 +1,109 @@
+/* กล่องกลางขนาดใกล้เคียงหน้าตะกร้า */
+.pd-container {
+  max-width: 900px;
+  width: 95%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 24px;
+}
+
+/* หัวข้อ: ปุ่มกลับเล็กและชื่ออยู่กลาง */
+.pd-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-bottom: 3px solid #1976d2;
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+}
+.pd-title {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #0d47a1;
+  font-weight: 700;
+  text-align: center;
+  flex: 1; /* ให้ชื่อกินพื้นที่กลาง */
+}
+.pd-title.center { text-align: center; }
+
+/* ปุ่มกลับเล็กวางซ้าย */
+.back-btn.small {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+/* ปุ่มพื้นฐาน (โทนเดียวกับที่ใช้ใน Cart/Orders) */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px; padding: 10px 14px; font-size: 14px; border-radius: 10px;
+  border: 1px solid #ccc; background: #fff; color: #111; cursor: pointer;
+  transition: transform .04s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+  text-decoration: none; white-space: nowrap;
+}
+.btn:hover { box-shadow: 0 4px 10px rgba(0,0,0,0.08); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn.blue { background: #1976d2; color: #fff; border-color: #1976d2; }
+.btn.blue:hover { background: #1565c0; border-color: #1565c0; }
+.btn.outline { background: #fff; color: #1976d2; border-color: #1976d2; }
+.btn.outline:hover { background: #e3f2fd; }
+
+/* เลย์เอาต์รูป/ข้อมูล */
+.pd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+@media (max-width: 768px) { .pd-grid { grid-template-columns: 1fr; } }
+
+/* รูปสินค้า */
+.pd-image {
+  background: #f3f4f6;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.pd-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* ข้อมูลสินค้า */
+.pd-info { display: flex; flex-direction: column; gap: 12px; }
+.pd-price { font-size: 1.2rem; color: #111827; }
+.pd-price-value { color: #2563eb; font-weight: 800; font-size: 1.6rem; }
+
+.pd-row { display: grid; grid-template-columns: 110px 1fr; gap: 10px; align-items: baseline; }
+.pd-row label { color: #6b7280; }
+
+.pd-desc label { display: block; margin-bottom: 4px; color: #6b7280; }
+.pd-desc p { margin: 0; color: #374151; line-height: 1.6; }
+
+.pd-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ควบคุมจำนวน –/qty/+ */
+.qty-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background: #f9fafb;
+}
+.qty-control .dec,
+.qty-control .inc {
+  width: 30px; height: 30px;
+  border: none; border-radius: 6px;
+  background: #1976d2; color: #fff; font-weight: 700;
+  cursor: pointer; transition: background .2s;
+}
+.qty-control .dec:hover, .qty-control .inc:hover { background: #1457a8; }
+.qty-control .qty { min-width: 24px; text-align: center; font-weight: 700; }

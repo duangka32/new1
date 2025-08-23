@@ -1,0 +1,27 @@
+/*src/Pages/Notifications.css*/
+/* File: src/Pages/Notifications.css */
+.notify-page { background-color: #ccf2ff; min-height: 100vh; display: flex; flex-direction: column; }
+.notify-wrapper { width: 100%; }
+.notify-content-box { margin-top: 12px; padding: 24px; min-height: 360px; display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; width: 95%; max-width: 1140px; border-radius: 12px; background-color: rgba(255, 255, 255, 0.397); box-shadow: 0 0 12px rgba(0, 0, 0, 0.2); margin-left: auto; margin-right: auto; }
+.notify-header { width: 100%; border-bottom: 3px solid #1976d2; padding-bottom: 10px; margin-bottom: 16px; text-align: center; }
+.notify-header h2 { margin: 0; font-size: 1.8rem; color: #0d47a1; font-weight: bold; }
+.notify-actions { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+.notify-item { width: 100%; display: flex; align-items: center; background: #fff; padding: 14px 16px; border-radius: 12px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.notify-item.is-read { opacity: 0.8; }
+.notify-left { flex: 1; }
+.notify-right { display: flex; align-items: center; gap: 10px; }
+.notify-message { font-weight: 600; margin-top: 2px; }
+.notify-meta { font-size: 12px; color: #374151; margin-top: 4px; }
+.badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; margin-right: 8px; }
+.badge-green { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+.badge-blue { background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
+.badge-orange { background: #fff3e0; color: #ef6c00; border: 1px solid #ffcc80; }
+.badge-gray { background: #eceff1; color: #455a64; border: 1px solid #cfd8dc; }
+.btn { padding: 8px 14px; border: none; border-radius: 8px; background: #ccc; cursor: pointer; font-weight: 700; }
+.btn:hover { filter: brightness(0.95); }
+.btn-light { background: #f3f4f6; }
+.btn-primary { background: lightgreen; }
+.notify-empty { text-align: center; padding: 40px 0; }
+/* ให้ไฟล์ชื่อเดิมยังทำงาน โดยดึงของจริงมาใช้ */
+@import url("./Notification.css");
+

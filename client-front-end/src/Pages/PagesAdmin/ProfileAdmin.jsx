@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import TopBar from '../../Pages/TopBar'; 
+
 import './ProfileAdmin.css';
 import { FaUserCircle } from "react-icons/fa";
-import { MdEditDocument } from "react-icons/md";
+import { MdEditDocument, MdShoppingCart } from "react-icons/md"; // ⬅️ เพิ่มไอคอนรถเข็น
 import { FaPlus } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-
 
 const ProfileAdmin = () => {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ const ProfileAdmin = () => {
 
   return (
     <div className="home-wrapper">
-      <TopBar searchText={searchText} setSearchText={setSearchText} />
+
 
       <div className="profile-container">
         <div className="profile-box">
@@ -29,6 +28,15 @@ const ProfileAdmin = () => {
           <input type="tel" placeholder="012-345-6789" />
 
           <div className="profile-buttons">
+            {/* ✅ ตัวเลือกแรก: การสั่งซื้อ */}
+            <button className="btn blue" onClick={() => navigate('/orders')}>
+              <span className="icon-text">
+                <MdShoppingCart size={18} />
+                <span>การสั่งซื้อ</span>
+              </span>
+            </button>
+
+            {/* เดิม: เพิ่มรายการสินค้า */}
             <button className="btn blue" onClick={() => navigate('/addProduct')}>
               <span className="icon-text">
                 <FaPlus color="white" />
@@ -36,7 +44,8 @@ const ProfileAdmin = () => {
               </span>
             </button>
 
-             <button className="btn blue" onClick={() => navigate('/productStock')}>
+            {/* เดิม: คลังสินค้า */}
+            <button className="btn blue" onClick={() => navigate('/productStock')}>
               <span className="icon-text">
                 <MdEditDocument size={18} />
                 <span>คลังสินค้า</span>

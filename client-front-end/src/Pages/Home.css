@@ -1,155 +1,152 @@
+/* ===== Variables (เฉพาะที่ใช้ในหน้านี้) ===== */
+:root { --container-max: 1140px; } 
+
+/* ให้จุดเลื่อนไปหา จอดต่ำกว่า TopBar เล็กน้อย */
+.main-content-box,
+.products-section {
+  scroll-margin-top: 12px;
+}
+
+/* รีเซ็ตพื้นฐาน */
+html, body, #root {
+  margin: 0; padding: 0; width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+*, *::before, *::after { box-sizing: inherit; }
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* ===== Layout ===== */
 .home-wrapper {
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
-
-.top-bar {
-  display: flex;
-  width: 100%;
-  height: 120px;
-  background-color: #1976d2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-/* ครอบรวมโปรไฟล์ ค้นหา รถเข็น */
-.left-bar,
-.right-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* ขวาและซ้ายอยู่ใกล้ search มากขึ้น */
-.left-bar {
-  margin-right: 16px;
-}
-
-.right-bar {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-
-.search-container {
-  flex: 1; 
-  max-width: 600px; 
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border-radius: 20px;
-  padding: 6px 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-
-.search-container input {
-  border: none;
-  outline: none;
-  padding: 6px 8px;
-  flex: 1;
-  font-size: 14px;
-}
-
-.search-btn,
-.clear-btn {
-  font-size: 20px;  /* หรือมากสุด 24px */
-  width: 32px;
-  height: 32px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.cart-icon,
-.notification-icon {
-  font-size: 36px; /* สำหรับ emoji หรือใช้ไอคอนจาก react-icons จะชัดกว่า */
-  margin-left: 20px;
-  cursor: pointer;
-}
-
-
 
 .home-content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 2rem;
+  display: block;
+  width: 100%;
 }
-.main-content-box {
-  margin-top: 20px;
-  background-color: rgba(255, 255, 255, 0.397);
-  padding: 30px;
+
+/* กล่องแผ่นใส (ครอบ hero) */
+.main-content-box{
+  width: min(var(--container-max), 95%);
+  margin: 0 auto 0;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(2px);
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-  width: 95%;
-  max-width: 1140px;
-  min-height: 500px;
-
-  display: flex;
-  gap: 30px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  padding: 16px;
+}
+.home-content > .main-content-box:first-child {
+  margin-top: 0 !important; /* ให้ระยะเท่าหน้าอื่น */
 }
 
-
-
-/* ส่วนรูปภาพด้านซ้าย */
-.ad-image {
-  flex: 2;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.ad-image img {
-  width: 90%;         /* ✅ กว้างขึ้นจากเดิม */
-  height: auto;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-
-
-/* ส่วนหมวดหมู่ด้านขวา */
-.category-grid {
+/* ===== HERO: โฆษณา + หมวดหมู่ ===== */
+.hero-grid{
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
-  gap: 20px;
-  justify-items: center; /* จัดให้อยู่กลางแต่ละคอลัมน์ */
-  align-items: center;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+  align-items: start;
+  position: relative;             /* ✅ สร้าง stacking context */
 }
 
-
-.category-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.ad-image{ 
+  display:flex; align-items:center; justify-content:center; 
+  position: relative; z-index: 0;
 }
-
-
-
-.category-icon {
-  width: 110px;         /* จากเดิม 60px */
-  height: 110px;
-  border-radius: 50%;
+.ad-image img{
+  width: 100%;
+  max-height: 320px;
   object-fit: cover;
-  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.15);
+  position: relative; 
+  z-index: 0;
+  pointer-events: none;           /* ✅ กันรูปกินคลิกของปุ่ม */
 }
 
-.category-item span {
-  font-size: 1.1rem;     /* เพิ่มขนาดข้อความ */
-  font-weight: 600;
+.category-compact{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 20px;
+  justify-items: center;
+  position: relative;
+  z-index: 1;                     /* ✅ ปุ่มอยู่ชั้นบน */
 }
+.cat-item{
+  background: transparent; border: 0;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 6px; cursor: pointer;
+  pointer-events: auto;           /* ✅ รับคลิกแน่นอน */
+}
+.cat-bubble{
+  width: 64px; height: 64px; border-radius: 50%;
+  object-fit: cover; background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,.12);
+  display: block;
+}
+.cat-item span{ font-weight: 700; font-size: 14px; }
 
+/* ===== สินค้า ===== */
+.products-section{
+  width: min(var(--container-max), 95%);
+  margin: 16px auto 24px;
+  padding: 0;
+  background: transparent;
+  display: block;
+}
+.products-title{ margin: 0 0 10px 6px; font-size: 18px; font-weight: 700; }
+
+/* กริดสินค้า — ครอบหลายเคสชื่อคลาส */
+.products-grid,
+.product-grid,
+.products-section .grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px 16px;
+  align-items: stretch;
+}
+.product-card { width: auto !important; max-width: 100%; }
+
+/* กัน float เก่าทำเลย์เอาต์พัง */
+.products-section * { float: none; }
+
+.more-btn{
+  display:block; margin:12px auto 0; padding:8px 14px;
+  border:1px solid #1976d2; background:#1976d2; color:#fff;
+  border-radius:10px; font-weight:700; cursor:pointer;
+}
+.more-btn:hover{ background:#1457a8; }
+
+/* ===== Modal overlay ===== */
+.modal-overlay{ position: fixed; inset: 0; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  .category-compact { grid-template-columns: repeat(4, 1fr); gap: 14px 20px; }
+  .cat-bubble { width: 58px; height: 58px; }
+  .cat-item span { font-size: 13px; }
+}
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .ad-image img{ max-height: 260px; }
+  .category-compact{ grid-template-columns: repeat(3, 1fr); gap: 12px 16px; }
+  .cat-bubble { width: 54px; height: 54px; }
+  .cat-item span { font-size: 13px; }
+}
+@media (max-width: 700px) {
+  .category-compact{ grid-template-columns: repeat(3, 1fr); gap: 10px 14px; }
+  .cat-bubble { width: 50px; height: 50px; }
+  .cat-item span { font-size: 12.5px; }
+}
+@media (max-width: 520px){
+  .category-compact{ grid-template-columns: repeat(2, 1fr); gap: 10px 12px; }
+  .cat-bubble { width: 46px; height: 46px; }
+  .cat-item span { font-size: 12px; }
+}

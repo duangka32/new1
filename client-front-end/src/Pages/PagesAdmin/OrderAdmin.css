@@ -1,0 +1,195 @@
+/* OrderAdmin.css */
+.orders-container {
+  /* เดิม width: 98vw → ทำให้ล้นและไปทับจุดคลิก */
+  width: min(1200px, 95%);
+  margin: 24px auto;
+
+  position: relative;   /* ให้มี stacking context ของตัวเอง */
+  z-index: 2;           /* อยู่เหนือพื้นหลัง/ชั้นอื่นแน่นอน */
+  pointer-events: auto; /* กันกรณี ancestor ตั้ง pointer-events: none */
+
+  padding: 32px;
+  min-height: 420px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  overflow-x: auto;     /* ตารางกว้างให้เลื่อนในกล่องนี้ */
+}
+
+.orders-container h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+/* แบนเนอร์แจ้งเตือน */
+.order-success-banner {
+  margin: 12px 0 16px;
+  padding: 10px 14px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* ===== ส่วนหัว + ฟิลเตอร์ (เผื่อใช้) ===== */
+.orders-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.orders-header .search {
+  flex: 1;
+  max-width: 360px;
+  display: flex;
+  gap: 8px;
+}
+.orders-header .search input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f7f7f8;
+  outline: none;
+}
+.orders-header .search input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25,118,210,0.15);
+}
+
+/* ===== ปุ่มพื้นฐาน ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  transition: transform .04s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn:hover { box-shadow: 0 4px 10px rgba(0,0,0,0.08); transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: 2px solid #1976d2; outline-offset: 2px; }
+
+/* สีน้ำเงิน (รับออเดอร์) */
+.btn.blue { background: #1976d2; color: #fff; border-color: #1976d2; }
+.btn.blue:hover { background: #1565c0; border-color: #1565c0; }
+
+/* แดง (ยกเลิก) */
+.btn.logout { background: #e53935; color: #fff; border-color: #e53935; }
+.btn.logout:hover { background: #d32f2f; border-color: #d32f2f; }
+
+/* กรอบน้ำเงิน */
+.btn.outline { background: #fff; color: #1976d2; border-color: #1976d2; }
+.btn.outline:hover { background: #e3f2fd; }
+
+/* ปุ่มเทา (สำรอง) */
+.btn.gray { background: #f3f4f6; color: #374151; border-color: #e5e7eb; }
+.btn.gray:hover { background: #e5e7eb; }
+
+/* ปุ่มปิดใช้งาน */
+.btn:disabled,
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* ปุ่มไอคอนทั่วไป (เช่น toggle/แก้ไข/ลบ) */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.icon-btn:hover { background: rgba(0,0,0,0.05); }
+.icon-btn:focus-visible { outline: 2px solid #1976d2; outline-offset: 2px; }
+
+/* ===== ตาราง ===== */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ปิด sticky header เพื่อหลีกเลี่ยง ResizeObserver loop */
+.orders-table thead th { position: static !important; }
+
+.orders-table th,
+.orders-table td {
+  border: 1px solid #e6e6e6;
+  padding: 12px 10px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.orders-table th {
+  background: #1976d2;
+  color: #fff;
+  font-weight: 700;
+}
+
+.orders-table tr:nth-child(even) { background: #fafafa; }
+.orders-table tbody tr:hover { background: #f2f7ff; }
+
+/* จัดชิดขวาสำหรับตัวเลข/ยอดเงิน */
+.orders-table td.num,
+.orders-table th.num { text-align: right; }
+
+/* คอลัมน์ชื่อสินค้า หรือข้อความยาวให้ชิดซ้าย */
+.orders-table td.left,
+.orders-table th.left { text-align: left; }
+
+/* โซนปุ่มแต่ละแถว */
+.orders-table td .row-actions {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== ป้ายสถานะ ===== */
+.status-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .2px;
+}
+.status-pending   { background: #fff7e6; color: #ad6800; border: 1px solid #ffe7ba; }
+.status-accepted  { background: #e6fffb; color: #006d75; border: 1px solid #b5f5ec; }
+.status-cancelled { background: #fff1f0; color: #a8071a; border: 1px solid #ffa39e; }
+
+/* ว่างเปล่า */
+.orders-empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 18px 0;
+  font-style: italic;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  .orders-container { width: min(95%, 1000px); padding: 24px; }
+  .orders-table th, .orders-table td { padding: 10px 8px; font-size: 14px; }
+}
+@media (max-width: 768px) {
+  .orders-container { width: 96%; padding: 20px; }
+  .orders-header { flex-direction: column; align-items: stretch; }
+  .orders-table { min-width: 720px; } /* ให้เลื่อนแนวนอนแทนการบีบ */
+}

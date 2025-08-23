@@ -1,30 +1,30 @@
+/* src/index.css */
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap');
 
-* {
+/* --- Reset พื้นฐาน --- */
+html, body, #root {
   margin: 0;
   padding: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
   box-sizing: border-box;
 }
+*, *::before, *::after { box-sizing: inherit; }
+img, video { max-width: 100%; height: auto; display: block; }
 
+/* --- ตัวอักษร + พื้นหลังรวม --- */
 body {
   font-family: "Kanit", sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
 
-  display: flex;              
-  justify-content: center;     
-  align-items: center;         
-
+  /* ถ้าต้องการพื้นหลังทั้งเว็บไว้ที่นี่ */
   background-image: url('./Components/Assets/background.jpg');
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-}
+
+/* ❌ ห้ามดันระยะ TopBar ที่นี่ — AppShell เป็นคนจัดการแล้ว */
+/* body { padding-top: ... }  <-- ลบทิ้ง */
+/* กันเลย์เอาต์สั่นเวลาเกิด/หายของสกรอลบาร์แนวตั้ง */
+html { overflow-y: scroll; }
